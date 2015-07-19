@@ -1,13 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net.Mail;
-using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using WE.Api.Objects;
@@ -129,28 +125,6 @@ namespace WE.Api
         }
 
         /// <summary>
-        /// Check to see if an email address is valid
-        /// If you are concerned about performance there could be a faster way to do this.  Fork and have at it.
-        /// </summary>
-        /// <param name="emailaddress"></param>
-        /// <returns></returns>
-        private bool IsValidEmail(string emailaddress)
-        {
-
-            //http://stackoverflow.com/questions/5342375/c-sharp-regex-email-validation
-
-            try
-            {
-                MailAddress m = new MailAddress(emailaddress);
-                return true;
-            }
-            catch (FormatException)
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
         /// Look up a WealthEngine profile by email and name (optional)
         /// </summary>
         /// <param name="email">The email of the profile you want to look up</param>
@@ -165,8 +139,7 @@ namespace WE.Api
                 throw new ArgumentNullException("email");
 
             //check to make sure the email is in a valid format
-            if (IsValidEmail(email) == false)
-                throw new ArgumentException("Email is not a valid format.");
+            //TODO: check for valid email
 
             //setup the http client
             var httpClient = SetupHttpClient();
