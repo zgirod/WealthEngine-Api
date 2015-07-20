@@ -195,9 +195,17 @@ namespace WE.Api
             //TODO: validate 2 letters
             if (string.IsNullOrWhiteSpace(state))
                 throw new ArgumentNullException("state");
+            else if (state.Trim().Length != 2)
+                throw new ArgumentException("state must be 2 digits");
 
             //check to make sure zip code is 5 digits
-            //TODO: validate zip code
+            int zipOut;
+            if (string.IsNullOrWhiteSpace(zip))
+                throw new ArgumentNullException("zip");
+            else if (zip.Trim().Length != 5)
+                throw new ArgumentException("zip code 5 digits");
+            else if (int.TryParse(zip.Trim(), out zipOut) == false)
+                throw new ArgumentException("zip code 5 digits");
 
             //setup the http client
             var httpClient = SetupHttpClient();
@@ -233,7 +241,11 @@ namespace WE.Api
             string firstName, string lastName)
         {
 
-            //TODO: validate the phone number
+            long phoneOut;
+            if (string.IsNullOrWhiteSpace(phone))
+                throw new ArgumentNullException("phone");
+            else if (long.TryParse(phone.Trim(), out phoneOut) == false)
+                throw new ArgumentException("phone must be all digits, no special characters");
 
             //setup the http client
             var httpClient = SetupHttpClient();

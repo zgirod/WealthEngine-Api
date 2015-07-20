@@ -2,17 +2,26 @@
 using WE.Api;
 using NUnit;
 using NUnit.Framework;
+using System.Configuration;
 
 namespace WE.Api.Tests
 {
     [TestFixture]
     public class ProfileByEmail
     {
+
+        private readonly string _apiKey;
+
+        public ProfileByEmail()
+        {
+            _apiKey = ConfigurationManager.AppSettings["WEAPiKey"].ToString();
+        }
+
         [Test]
         public void ShouldNotThrowAnError()
         {
 
-            var api = new WealthEngineApi("f0f44ec8-65dd-4d2d-9084-fedb7bb73a1a", "SANDBOX");
+            var api = new WealthEngineApi(_apiKey, "SANDBOX");
             var response = api.GetProfileByEmailAsync("john@doe.com", "John", "Doe").Result;
 
         }
@@ -22,7 +31,7 @@ namespace WE.Api.Tests
         public void MissingEmail()
         {
 
-            var api = new WealthEngineApi("f0f44ec8-65dd-4d2d-9084-fedb7bb73a1a", "SANDBOX");
+            var api = new WealthEngineApi(_apiKey, "SANDBOX");
             var response = api.GetProfileByEmailAsync(null, "John", "Doe").Result;
 
         }
@@ -33,7 +42,7 @@ namespace WE.Api.Tests
         public void InvalidEmail()
         {
 
-            var api = new WealthEngineApi("f0f44ec8-65dd-4d2d-9084-fedb7bb73a1a", "SANDBOX");
+            var api = new WealthEngineApi(_apiKey, "SANDBOX");
             var response = api.GetProfileByEmailAsync("john@doe", "John", "Doe").Result;
 
         }
