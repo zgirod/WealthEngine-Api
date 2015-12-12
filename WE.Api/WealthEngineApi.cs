@@ -98,11 +98,11 @@ namespace WE.Api
             return httpClient;
         }
 
-        private async Task<ApiResponse> BuildApiResponseAsync(HttpResponseMessage httpResponse)
+        private async Task<ApiResponse<TMatch>> BuildApiResponseAsync<TMatch>(HttpResponseMessage httpResponse)
         {
 
             //setup the api response to be returned
-            var apiResponse = new ApiResponse() { ProfileMatch = null };
+            var apiResponse = new ApiResponse<TMatch>();
 
             //set the status code
             apiResponse.StatusCode = (int)httpResponse.StatusCode;
@@ -115,7 +115,7 @@ namespace WE.Api
             {
 
                 //deserialize the response into a profile match
-                apiResponse.ProfileMatch = JsonConvert.DeserializeObject<BasicProfileMatch>(apiResponse.RawContent);
+                apiResponse.ProfileMatch = JsonConvert.DeserializeObject<TMatch>(apiResponse.RawContent);
 
             }
 
@@ -131,7 +131,7 @@ namespace WE.Api
         /// <param name="firstName">The first name of the profile you want to look up</param>
         /// <param name="lastName">The last name of the profile you want to look up</param>
         /// <returns></returns>
-        public async Task<ApiResponse> GetProfileByEmailAsync(string email, string firstName, string lastName)
+        public async Task<ApiResponse<TMatch>> GetProfileByEmailAsync<TMatch>(string email, string firstName, string lastName)
         {
 
             //check to make sure an email was supplied
@@ -151,13 +151,18 @@ namespace WE.Api
                 { "first_name", firstName },
                 { "last_name", lastName }
             };
-            
+
+            //get the endpoint
+            var endpoint = "profile/find_one/by_email/basic";
+            if (typeof(TMatch) == typeof(FullProfileMatch))
+                endpoint = "profile/find_one/by_email/full";
+
             //make the post call
-            HttpResponseMessage response = await httpClient.PostAsync(_apiRoot + "profile/find_one/by_email/basic", 
+            HttpResponseMessage response = await httpClient.PostAsync(_apiRoot + endpoint, 
                 new StringContent(JsonConvert.SerializeObject(postData), Encoding.UTF8, "application/json"));
 
             //build the response
-            return await BuildApiResponseAsync(response);
+            return await BuildApiResponseAsync<TMatch>(response);
             
         }
 
@@ -171,7 +176,7 @@ namespace WE.Api
         /// <param name="state">The state of the profile you want to look up</param>
         /// <param name="zip">The zip code of the profile you want to look up</param>
         /// <returns></returns>
-        public async Task<ApiResponse> GetProfileByNameAndAddressAsync(string firstName, 
+        public async Task<ApiResponse<TMatch>> GetProfileByNameAndAddressAsync<TMatch>(string firstName, 
             string lastName, string address1, string city, string state, string zip)
         {
 
@@ -221,12 +226,17 @@ namespace WE.Api
                 { "zip", zip },
             };
 
+            //get the endpoint
+            var endpoint = "profile/find_one/by_address/basic";
+            if (typeof(TMatch) == typeof(FullProfileMatch))
+                endpoint = "profile/find_one/by_address/full";
+
             //make the post call
-            HttpResponseMessage response = await httpClient.PostAsync(_apiRoot + "profile/find_one/by_address/basic",
+            HttpResponseMessage response = await httpClient.PostAsync(_apiRoot + endpoint,
                 new StringContent(JsonConvert.SerializeObject(postData), Encoding.UTF8, "application/json"));
 
             //build the response
-            return await BuildApiResponseAsync(response);
+            return await BuildApiResponseAsync<TMatch>(response);
 
         }
 
@@ -237,7 +247,7 @@ namespace WE.Api
         /// <param name="firstName">The first name of the profile you want to look up</param>
         /// <param name="lastName">The last name of the profile you want to look up</param>
         /// <returns></returns>
-        public async Task<ApiResponse> GetProfileByPhoneAsync(string phone,
+        public async Task<ApiResponse<TMatch>> GetProfileByPhoneAsync<TMatch>(string phone,
             string firstName, string lastName)
         {
 
@@ -258,12 +268,17 @@ namespace WE.Api
                 { "last_name", lastName }
             };
 
+            //get the endpoint
+            var endpoint = "profile/find_one/by_phone/basic";
+            if (typeof(TMatch) == typeof(FullProfileMatch))
+                endpoint = "profile/find_one/by_phone/full";
+
             //make the post call
-            HttpResponseMessage response = await httpClient.PostAsync(_apiRoot + "profile/find_one/by_phone/basic",
+            HttpResponseMessage response = await httpClient.PostAsync(_apiRoot + endpoint,
                 new StringContent(JsonConvert.SerializeObject(postData), Encoding.UTF8, "application/json"));
 
             //build the response
-            return await BuildApiResponseAsync(response);
+            return await BuildApiResponseAsync<TMatch>(response);
 
         }
         

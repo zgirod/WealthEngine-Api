@@ -32,30 +32,8 @@ namespace WE.Api.Objects
         public class Wealth
         {
 
-            public class NetWorth
-            {
-
-                public int min { get; set; }
-                public int max { get; set; }
-                public int value { get; set; }
-                public string text { get; set; }
-                public string text_low { get; set; }
-                public string text_high { get; set; }
-
-            }
-
-            public class Income
-            {
-                public int min { get; set; }
-                public int max { get; set; }
-                public int value { get; set; }
-                public string text { get; set; }
-                public string text_low { get; set; }
-                public string text_high { get; set; }
-            }
-
-            public NetWorth networth { get; set; }
-            public Income total_income { get; set; }
+            public TextValueFull networth { get; set; }
+            public TextValueFull total_income { get; set; }
             public bool accredited_investor { get; set; }
             
         }
@@ -63,52 +41,20 @@ namespace WE.Api.Objects
         public class Giving 
         {
 
-            public class P2G
-            {
-                public string value { get; set; }
-                public string text { get; set; }
-            }
-
-            public class GiftCapacity
-            {
-                public int min { get; set; }
-                public int max { get; set; }
-                public int value { get; set; }
-                public string text { get; set; }
-                public string text_low { get; set; }
-                public string text_high { get; set; }
-            }
-
-            public class EstimatedAnnualDonations
-            {
-                public int min { get; set; }
-                public int max { get; set; }
-                public int value { get; set; }
-                public string text { get; set; }
-                public string text_low { get; set; }
-                public string text_high { get; set; }
-            }
-
-            public P2G p2g_score { get; set; }
-            public GiftCapacity gift_capacity { get; set; }
-            public EstimatedAnnualDonations estimated_annual_donations { get; set; }
+            public TextValueSlim p2g_score { get; set; }
+            public TextValueFull gift_capacity { get; set; }
+            public TextValueFull estimated_annual_donations { get; set; }
 
         }
 
         public class Address
         {
 
-            public class State 
-            {
-                public string value { get; set; }
-                public string text { get; set; }
-            }
-
             public string street_line1 { get; set; }
             public string street_line2 { get; set; }
             public string street_line3 { get; set; }
             public string city { get; set; }
-            public State state { get; set; }
+            public TextValueSlim state { get; set; }
             public string postal_code { get; set; }
 
         }
@@ -116,18 +62,8 @@ namespace WE.Api.Objects
         public class RealEstate
         {
 
-            public class TotalValue
-            {
-                public int min { get; set; }
-                public int max { get; set; }
-                public int value { get; set; }
-                public string text { get; set; }
-                public string text_low { get; set; }
-                public string text_high { get; set; }
-            }
-
             public int total_num_properties { get; set; }
-            public TotalValue total_realestate_value { get; set; }
+            public TextValueFull total_realestate_value { get; set; }
 
         }
 
@@ -139,9 +75,5 @@ namespace WE.Api.Objects
         public RealEstate realestate { get; set; }
 
     }
-
-    
-
-    
 
 }

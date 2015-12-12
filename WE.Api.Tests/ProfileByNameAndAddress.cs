@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WE.Api.Objects;
 
 namespace WE.Api.Tests
 {
@@ -25,7 +26,8 @@ namespace WE.Api.Tests
         {
 
             var api = new WealthEngineApi(_apiKey, "SANDBOX");
-            var response = api.GetProfileByEmailAsync("john@doe.com", "John", "Doe").Result;
+            var response = api.GetProfileByEmailAsync<BasicProfileMatch>("john@doe.com", "John", "Doe").Result;
+            var responseFull = api.GetProfileByEmailAsync<FullProfileMatch>("john@doe.com", "John", "Doe").Result;
 
         }
 

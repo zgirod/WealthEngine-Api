@@ -1,5 +1,5 @@
 ﻿using System;
-using WE.Api;
+using WE.Api.Objects;
 using NUnit;
 using NUnit.Framework;
 using System.Configuration;
@@ -22,7 +22,8 @@ namespace WE.Api.Tests
         {
 
             var api = new WealthEngineApi(_apiKey, "SANDBOX");
-            var response = api.GetProfileByEmailAsync("john@doe.com", "John", "Doe").Result;
+            var response = api.GetProfileByEmailAsync<BasicProfileMatch>("john@doe.com", "John", "Doe").Result;
+            var responseFull = api.GetProfileByEmailAsync<FullProfileMatch>("john@doe.com", "John", "Doe").Result;
 
         }
 
@@ -32,7 +33,8 @@ namespace WE.Api.Tests
         {
 
             var api = new WealthEngineApi(_apiKey, "SANDBOX");
-            var response = api.GetProfileByEmailAsync(null, "John", "Doe").Result;
+            var response = api.GetProfileByEmailAsync<BasicProfileMatch>(null, "John", "Doe").Result;
+            var responseFull = api.GetProfileByEmailAsync<FullProfileMatch>(null, "John", "Doe").Result;
 
         }
 
@@ -43,7 +45,8 @@ namespace WE.Api.Tests
         {
 
             var api = new WealthEngineApi(_apiKey, "SANDBOX");
-            var response = api.GetProfileByEmailAsync("john@doe", "John", "Doe").Result;
+            var response = api.GetProfileByEmailAsync<BasicProfileMatch>("john@doe", "John", "Doe").Result;
+            var responseFull = api.GetProfileByEmailAsync<FullProfileMatch>("john@doe", "John", "Doe").Result;
 
         }
 
