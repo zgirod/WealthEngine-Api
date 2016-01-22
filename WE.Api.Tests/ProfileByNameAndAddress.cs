@@ -26,8 +26,8 @@ namespace WE.Api.Tests
         {
 
             var api = new WealthEngineApi(_apiKey, "SANDBOX");
-            var response = api.GetProfileByEmailAsync<BasicProfileMatch>("john@doe.com", "John", "Doe").Result;
-            var responseFull = api.GetProfileByEmailAsync<FullProfileMatch>("john@doe.com", "John", "Doe").Result;
+            var response = api.GetProfileByNameAndAddressAsync<BasicProfileMatch>("William", "Gates", "1 MICROSOFT WAY", "REDMOND", "WA", "98052").Result;
+            var responseFull = api.GetProfileByNameAndAddressAsync<FullProfileMatch>("William", "Gates", "1 MICROSOFT WAY", "REDMOND", "WA", "98052").Result;
 
         }
 

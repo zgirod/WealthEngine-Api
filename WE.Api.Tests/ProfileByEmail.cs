@@ -15,16 +15,15 @@ namespace WE.Api.Tests
         public ProfileByEmail()
         {
             _apiKey = ConfigurationManager.AppSettings["WEAPiKey"].ToString();
-            _apiKey = "7cbd576d-df75-4cce-8683-1c65d250e121";
         }
 
         [Test]
         public void ShouldNotThrowAnError()
         {
 
-            var api = new WealthEngineApi(_apiKey, "PROD");
-            var response = api.GetProfileByEmailAsync<BasicProfileMatch>("danfraser12@gmail.com", "Mark", "Zuckerberg").Result;
-            var responseFull = api.GetProfileByEmailAsync<FullProfileMatch>("danfraser12@gmail.com", "Mark", "Zuckerberg").Result;
+            var api = new WealthEngineApi(_apiKey, "SANDBOX");
+            var response = api.GetProfileByEmailAsync<BasicProfileMatch>("JohnDoe@gmail.com", "John", "Doe").Result;
+            var responseFull = api.GetProfileByEmailAsync<FullProfileMatch>("JohnDoe@gmail.com", "John", "Doe").Result;
 
         }
 

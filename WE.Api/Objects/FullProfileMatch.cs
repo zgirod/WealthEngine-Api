@@ -122,7 +122,7 @@ namespace WE.Api.Objects
             public Address address { get; set; }
         }
 
-        //public int id { get; set; }
+        //public long id { get; set; }
         public Identity identity { get; set; }
         public Demographics demographics { get; set; }
         public Relationship relationship { get; set; }

@@ -67,7 +67,7 @@ namespace WE.Api.Objects
 
         }
 
-        public int id { get; set; }
+        public long id { get; set; }
         public Identity identity { get; set; }
         public Wealth wealth { get; set; }
         public Giving giving { get; set; }
