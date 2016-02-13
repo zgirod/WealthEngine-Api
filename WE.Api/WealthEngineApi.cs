@@ -115,7 +115,7 @@ namespace WE.Api
             {
 
                 //deserialize the response into a profile match
-                apiResponse.ProfileMatch = JsonConvert.DeserializeObject<TMatch>(apiResponse.RawContent.Replace(".0,", ","));
+                apiResponse.ProfileMatch = JsonConvert.DeserializeObject<TMatch>(apiResponse.RawContent.Replace(".0,", ",").Replace(".0}", "}"));
 
             }
 

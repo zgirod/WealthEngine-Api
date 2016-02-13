@@ -47,6 +47,11 @@ namespace WE.Api.Objects
 
         }
 
+        public class Location
+        {
+            public Address Address { get; set; }
+        }
+
         public class Address
         {
 
@@ -71,7 +76,7 @@ namespace WE.Api.Objects
         public Identity identity { get; set; }
         public Wealth wealth { get; set; }
         public Giving giving { get; set; }
-        public List<Address> locations { get; set; }
+        public List<Location> locations { get; set; }
         public RealEstate realestate { get; set; }
 
     }

@@ -71,7 +71,7 @@ namespace WE.Api.Objects
         {
 
             public TextValueSlim affiliation_inclination { get; set; }
-            public List<TextValueSlim> planned_giving { get; set; }
+            //public List<TextValueSlim> planned_giving { get; set; }
             public TextValueSlim influence_rating { get; set; }
 
             public TextValueSlim p2g_score { get; set; }
@@ -80,6 +80,11 @@ namespace WE.Api.Objects
             public TextValueFull total_political_donations { get; set; }
             public TextValueFull estimated_annual_donations { get; set; }
 
+        }
+
+        public class Location
+        {
+            public Address Address { get; set; }
         }
 
         public class Address
@@ -128,7 +133,7 @@ namespace WE.Api.Objects
         public Relationship relationship { get; set; }
         public Wealth wealth { get; set; }
         public Giving giving { get; set; }
-        public List<Address> locations { get; set; }
+        public List<Location> locations { get; set; }
         public RealEstate realestate { get; set; }
         public Professional professional { get; set; }
         public Vehicles vehicles { get; set; }
