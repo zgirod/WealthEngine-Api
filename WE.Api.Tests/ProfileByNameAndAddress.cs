@@ -21,16 +21,6 @@ namespace WE.Api.Tests
             _apiKey = ConfigurationManager.AppSettings["WEAPiKey"].ToString();
         }
 
-        [Test]
-        public void ShouldNotThrowAnError()
-        {
-
-            var api = new WealthEngineApi(_apiKey, "SANDBOX");
-            var response = api.GetProfileByNameAndAddressAsync<BasicProfileMatch>("William", "Gates", "1 MICROSOFT WAY", "REDMOND", "WA", "98052").Result;
-            var responseFull = api.GetProfileByNameAndAddressAsync<FullProfileMatch>("William", "Gates", "1 MICROSOFT WAY", "REDMOND", "WA", "98052").Result;
-
-        }
-
     }
 
 }
