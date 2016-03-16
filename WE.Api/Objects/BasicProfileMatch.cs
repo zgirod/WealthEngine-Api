@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 namespace WE.Api.Objects
 {
 
-    //gender
-
     public class BasicProfileMatch
     {
 
@@ -47,11 +45,6 @@ namespace WE.Api.Objects
 
         }
 
-        public class Location
-        {
-            public Address Address { get; set; }
-        }
-
         public class Address
         {
 
@@ -62,6 +55,12 @@ namespace WE.Api.Objects
             public TextValueSlim state { get; set; }
             public string postal_code { get; set; }
 
+        }
+
+        public class Location
+        {
+            public Address Address { get; set; }
+            public string personal_phone { get; set; }
         }
 
         public class RealEstate

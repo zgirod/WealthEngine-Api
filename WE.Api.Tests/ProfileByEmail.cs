@@ -21,7 +21,7 @@ namespace WE.Api.Tests
         public void ShouldNotThrowAnError()
         {
 
-            var api = new WealthEngineApi(_apiKey, "SANDBOX");
+            var api = new WealthEngineApi(_apiKey, "SANDBOX", "v1");
             var response = api.GetProfileByEmailAsync<BasicProfileMatch>("JohnDoe@gmail.com", "John", "Doe").Result;
             var responseFull = api.GetProfileByEmailAsync<FullProfileMatch>("JohnDoe@gmail.com", "John", "Doe").Result;
 
@@ -32,7 +32,7 @@ namespace WE.Api.Tests
         public void MissingEmail()
         {
 
-            var api = new WealthEngineApi(_apiKey, "SANDBOX");
+            var api = new WealthEngineApi(_apiKey, "SANDBOX", "v1");
             var response = api.GetProfileByEmailAsync<BasicProfileMatch>(null, "John", "Doe").Result;
             var responseFull = api.GetProfileByEmailAsync<FullProfileMatch>(null, "John", "Doe").Result;
 
@@ -44,7 +44,7 @@ namespace WE.Api.Tests
         public void InvalidEmail()
         {
 
-            var api = new WealthEngineApi(_apiKey, "SANDBOX");
+            var api = new WealthEngineApi(_apiKey, "SANDBOX", "v1");
             var response = api.GetProfileByEmailAsync<BasicProfileMatch>("john@doe", "John", "Doe").Result;
             var responseFull = api.GetProfileByEmailAsync<FullProfileMatch>("john@doe", "John", "Doe").Result;
 

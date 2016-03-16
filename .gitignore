@@ -230,3 +230,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 WE.Api/WE.Api.nuspec
+WE.Api.Tests/App.SECRET.config
+WE.Api.Tests/App.SECRET.config

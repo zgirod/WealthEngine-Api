@@ -49,6 +49,7 @@
     <Compile Include="Objects\ApiResponse.cs" />
     <Compile Include="Objects\BasicProfileMatch.cs" />
     <Compile Include="Objects\FullProfileMatch.cs" />
+    <Compile Include="Objects\ScoreResponse.cs" />
     <Compile Include="Objects\TextValueFull.cs" />
     <Compile Include="Objects\TextValueSlim.cs" />
     <Compile Include="WealthEngineApi.cs" />

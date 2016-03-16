@@ -71,7 +71,7 @@ namespace WE.Api.Objects
         {
 
             public TextValueSlim affiliation_inclination { get; set; }
-            //public List<TextValueSlim> planned_giving { get; set; }
+            public List<TextValueSlim> planned_giving { get; set; }
             public TextValueSlim influence_rating { get; set; }
 
             public TextValueSlim p2g_score { get; set; }
@@ -85,6 +85,7 @@ namespace WE.Api.Objects
         public class Location
         {
             public Address Address { get; set; }
+            public string personal_phone { get; set; }
         }
 
         public class Address
@@ -127,7 +128,7 @@ namespace WE.Api.Objects
             public Address address { get; set; }
         }
 
-        //public long id { get; set; }
+        public long id { get; set; }
         public Identity identity { get; set; }
         public Demographics demographics { get; set; }
         public Relationship relationship { get; set; }
@@ -136,7 +137,7 @@ namespace WE.Api.Objects
         public List<Location> locations { get; set; }
         public RealEstate realestate { get; set; }
         public Professional professional { get; set; }
-        public Vehicles vehicles { get; set; }
+        public List<Vehicles> vehicles { get; set; }
         public List<Job> jobs { get; set; }
 
     }
