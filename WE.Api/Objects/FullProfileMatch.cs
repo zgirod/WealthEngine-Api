@@ -115,7 +115,7 @@ namespace WE.Api.Objects
 
         public class Vehicles
         {
-            public TextValueSlim ownership { get; set; }
+            public List<TextValueSlim> ownership { get; set; }
         }
 
         public class Job
@@ -137,7 +137,7 @@ namespace WE.Api.Objects
         public List<Location> locations { get; set; }
         public RealEstate realestate { get; set; }
         public Professional professional { get; set; }
-        public List<Vehicles> vehicles { get; set; }
+        public Vehicles vehicles { get; set; }
         public List<Job> jobs { get; set; }
 
     }
